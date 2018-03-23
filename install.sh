@@ -16,3 +16,10 @@ if [[ ! -e "$HOME/.zshrc.custom" ]]; then
 else
     echo "zshrc.custom already exists. Skipping..."
 fi
+
+if [[ ! -e "$HOME/.vimrc" ]]; then
+    ln -srT vimrc $HOME/.vimrc
+    echo "Installed vimrc"
+else
+    echo "vimrc already exists. Skipping..."
+fi
