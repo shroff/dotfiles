@@ -1,0 +1,19 @@
+# scaling for HiDPI devices
+export GDK_SCALE=2
+
+# basic exports
+export TERMINAL=alacritty
+export EDITOR=vim
+export VISUAL=vim
+
+# basic aliases
+alias erc="$EDITOR ~/.zshrc"
+alias src="source ~/.zshrc"
+
+# remapped command aliases
+alias ls="ls --color=auto"
+
+# git aliases
+alias gst="git status"
+alias gca="git commit -a"
+alias gcam="git commit -a --amend"
