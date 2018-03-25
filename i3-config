@@ -17,7 +17,7 @@ set $right l
 font pango:DejaVu Sans Mono 32
 
 # Your preferred terminal emulator
-set $term terminator
+set $term alacritty
 # Your preferred application launcher
 set $menu rofi -show run
 
