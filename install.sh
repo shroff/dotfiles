@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # install i3 config
+mkdir -p $HOME/.config/i3
 if [[ ! -e "$HOME/.config/i3/config" ]]; then
     ln -srfT i3-config $HOME/.config/i3/config
     echo "Installed i3 config"
@@ -22,4 +23,12 @@ if [[ ! -e "$HOME/.vimrc" ]]; then
     echo "Installed vimrc"
 else
     echo "vimrc already exists. Skipping..."
+fi
+
+mkdir -p $HOME/.config/dunst
+if [[ ! -e "$HOME/.config/dunst/dunstrc" ]]; then
+    ln -srT dunstrc $HOME/.config/dunst/dunstrc
+    echo "Installed dunstrc"
+else
+    echo "dunstrc already exists. Skipping..."
 fi
