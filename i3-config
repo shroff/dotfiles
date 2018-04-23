@@ -14,12 +14,12 @@ set $down j
 set $up k
 set $right l
 
-font pango:DejaVu Sans Mono 24
+font pango:DejaVu Sans Mono 12
 
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-set $menu rofi -show run
+set $menu rofi -show drun
 
 
 ### Key bindings
@@ -167,7 +167,7 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     status_command SCRIPT_DIR=$HOME/.config/i3blocks/blocks i3blocks -c $HOME/.config/i3blocks/config
-    font pango:DejaVu Sans Mono 28
+    font pango:DejaVu Sans Mono 14
     position bottom
     colors {
         statusline #ffffff

@@ -2,6 +2,7 @@
 export GDK_SCALE=2
 
 # basic exports
+export PATH="$HOME/.bin:$PATH:/opt/android-sdk/platform-tools/"
 export TERMINAL=alacritty
 export EDITOR=vim
 export VISUAL=vim
