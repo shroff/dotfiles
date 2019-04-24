@@ -1,8 +1,4 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# i3 config file (v4)
 
 ### Variables
 #
@@ -14,7 +10,7 @@ set $down j
 set $up k
 set $right l
 
-font pango:DejaVu Sans Mono 12
+font pango:DejaVu Sans Mono 18
 
 set $term alacritty
 set $menu rofi -show drun
@@ -180,9 +176,8 @@ bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command SCRIPT_DIR=$HOME/.config/i3blocks/blocks i3blocks -c $HOME/.config/i3blocks/config
+    status_command SCRIPT_DIR=$HOME/sandbox/i3blocks-contrib i3blocks -c $HOME/.config/i3/blocks-config
     font pango:DejaVu Sans Mono 14
     position bottom
     colors {
@@ -195,4 +190,10 @@ bar {
 exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-clipman
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id msm_notifier
+exec --no-startup-id system-config-printer-applet
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
