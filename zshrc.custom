@@ -8,7 +8,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # basic aliases
-alias erc="$EDITOR ~/.zshrc"
+alias erc="$EDITOR ~/.zshrc.custom"
 alias src="source ~/.zshrc"
 
 # remapped command aliases
