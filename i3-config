@@ -44,23 +44,29 @@ focus_follows_mouse no
     # reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # restart i3
+    bindsym $mod+Shift+w restart
+
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exit
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+Tab focus right
-    bindsym $mod+Shift+Tab focus left
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+
     # or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+
+    # cycle focus
+    bindsym $mod+Tab focus right
+    bindsym $mod+Shift+Tab focus left
 
     # _move_ the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -187,13 +193,18 @@ bar {
     }
 }
 
+bindsym XF86AudioMute exec amixer sset Master toggle && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86MonBrightnessUp exec light -A 5 #&& notify-send " " -i display-brightness -h int:value:$(light | cut -f1 -d ".")
+bindsym XF86MonBrightnessDown exec light -U 5 #&& notify-send " " -i display-brightness -h int:value:$(light | cut -f1 -d ".")
+
 exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- i3lock
-exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-clipman
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id msm_notifier
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
