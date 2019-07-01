@@ -9,6 +9,22 @@ else
     echo "i3 config already installed. Skipping..."
 fi
 
+if [[ ! -e "$HOME/.config/i3/config-sway-i3-common" ]]; then
+    ln -srT sway-i3-common-config $HOME/.config/i3/config-sway-i3-common
+    echo "Installed sway-i3-common config"
+else
+    echo "sway-i3-common config already installed. Skipping..."
+fi
+
+# install sway config
+mkdir -p $HOME/.config/sway
+if [[ ! -e "$HOME/.config/sway/config" ]]; then
+    ln -srfT sway-config $HOME/.config/sway/config
+    echo "Installed sway config"
+else
+    echo "sway config already installed. Skipping..."
+fi
+
 # install zshrc
 if [[ ! -e "$HOME/.zshrc.custom" ]]; then
     ln -srT zshrc.custom $HOME/.zshrc.custom
@@ -33,6 +49,7 @@ if [[ ! -e "$HOME/.config/dunst/dunstrc" ]]; then
     echo "Installed dunstrc"
 else
     echo "dunstrc already exists. Skipping..."
+fi
 
 # screnrc
 if [[ ! -e "$HOME/.screenrc" ]]; then

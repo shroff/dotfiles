@@ -1,0 +1,30 @@
+include ../i3/config-sway-i3-common
+
+set $term termite --title=Term
+set $lock 'swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png'
+set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
+set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
+
+output eDP-1 scale 2
+output * bg ~/.cache/wallpaper.png fit
+
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
+
+xwayland enable
+
+exec swayidle -w \
+    lock $lock \
+    timeout 15 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    timeout 300 'swaymsg "output * dpms off"' \
+    timeout 600 $lock \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $lock
+
+exec --no-startup-id mako
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
