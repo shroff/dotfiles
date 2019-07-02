@@ -1,8 +1,8 @@
 intel-ucode exfat-utils grub efibootmgr dialog wpa_supplicant network-manager
 
-base-devel sudo git openssh neovim python3-neovim weston xorg-server-xwayland ttf-dejavu 
+base-devel sudo git openssh neovim python-neovim weston xorg-server-xwayland ttf-dejavu 
 
-sway polkit i3blocks-git swayidle swaylock slurp grim rofi mako pactl pavucontrol pualsa-utils light iw acpi wl-clipboard termite termite-terminfo otf-font-awesome
+sway polkit i3blocks-git swayidle swaylock slurp grim rofi mako pavucontrol alsa-utils light iw acpi wl-clipboard termite termite-terminfo otf-font-awesome
 gnome gnome-software-packagekit-plugin
 
 ```
