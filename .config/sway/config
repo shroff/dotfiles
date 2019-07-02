@@ -199,7 +199,7 @@ bindsym $mod+r mode "resize"
 
 # statusbar
 bar {
-    status_command SCRIPT_DIR=$HOME/sandbox/i3blocks-contrib i3blocks -c $HOME/.config/i3/blocks-config
+    status_command SCRIPT_DIR=$HOME/sandbox/i3blocks-contrib i3blocks -c $HOME/.config/sway/blocks-config
     font pango:DejaVu Sans Mono 14
     position bottom
     colors {
