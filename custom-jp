@@ -1,0 +1,15 @@
+default partial
+xkb_symbols "basic" {
+    include "us(basic)"
+    name[Group1]= "US QUERTY (Japanese Keyboard)";
+
+    key <AE13> {[ BackSpace, BackSpace ]};
+    key <AB11> {[ Shift_R ]};
+
+    key <HENK> {[ space, space, space, space ]};
+    key <MUHE> {[ space, space, space, space ]};
+    key <HKTG> {[ space, space, space, space ]};
+
+    modifier_map Shift { <LFSH>, <RTSH>, <AB11> };
+};
+

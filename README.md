@@ -22,3 +22,4 @@ systemd-inhibit --mode=block sudo pacman -Syu
 SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]", RUN+="/usr/bin/systemctl hibernate"
 ```
 
+Move `custom` to `/usr/share/X11/xkb/symbols`

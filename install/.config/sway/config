@@ -13,10 +13,15 @@ set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screen
 output eDP-1 scale 2
 output * bg ~/.cache/wallpaper.png fit
 
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input * {
     tap enabled
     natural_scroll enabled
     dwt enabled
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout custom
+    xkb_model basic
 }
 
 font pango:DejaVu Sans Mono 14
