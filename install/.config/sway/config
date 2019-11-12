@@ -5,12 +5,14 @@ set $up k
 set $right l
 
 set $term termite --title=Term
-set $lock 'swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png'
+set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png
+set $nolock ${HOME}/.nolock
 set $menu rofi -show drun
 set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 
 output eDP-1 scale 2
+output eDP-1 pos 0 0
 output * bg ~/.cache/wallpaper.png fit
 
 input * {
@@ -33,13 +35,13 @@ workspace_layout tabbed
 xwayland enable
 
 exec swayidle -w \
-    lock $lock \
-    timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+    lock '$lock' \
+    before-sleep '$lock' \
+    timeout 10 'if pgrep --uid $USER -x swaylock; then if ! ls $nolock; then swaymmsg "output * dpms off"; fi; fi' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 120 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    timeout 150 $lock \
-    before-sleep $lock
+    timeout 120 'if ! ls $nolock; then swaymsg "output * dpms off"; fi' \
+    resume 'swaymsg "output * dpms on"'  \
+    timeout 180 'if ! ls $nolock; then $lock; fi'
 
 ### Key bindings
 #
