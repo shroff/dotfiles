@@ -44,6 +44,9 @@ STEP=10
 interval=once
 signal=11
 
+[lock-indicator]
+interval=once
+
 [wifi]
 INTERFACE=wlp0s20f3
 label= 
