@@ -48,7 +48,6 @@ signal=11
 interval=once
 
 [wifi]
-INTERFACE=wlp0s20f3
 label= 
 interval=10
 
