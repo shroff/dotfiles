@@ -48,7 +48,7 @@ set smartcase
 set nohlsearch
 
 set number
-"set numberwidth=5 " up to 1000s place
+set numberwidth=4 " up to 1000s place
 set ruler
 set wildmenu
 

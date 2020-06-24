@@ -1,18 +1,27 @@
 #!/bin/bash
 
-# wayland
-export GDK_BACKEND=wayland
-export CLUTTER_BACKEND=wayland
-export QT_QPA_PLATFORM="wayland;xcb"
-export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+# GTK3
+#export GDK_SCALE=2
+#export GDK_BACKEND=wayland # Not Needed
+#export GDK_BACKEND=x11 # Force XWayland
+
+# QT (install qt5-wayland)
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland-egl
+#export QT_QPA_PLATFORM=xcb # Force XWayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_WAYLAND_FORCE_DPI=physical
+
+# Elementary
 export ECORE_EVAS_ENGINE=wayland_egl
 export ELM_ENGINE=wayland_egl
-export SDL_VIDEODRIVER=wayland
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-export TERMINAL='termite --title=Term'
+# SDL
+export SDL_VIDEODRIVER=wayland
+
+export CLUTTER_BACKEND=wayland
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 exec dbus-launch --sh-syntax --exit-with-session sway
