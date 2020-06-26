@@ -1,0 +1,44 @@
+window {
+    background-color: rgba(0, 0, 0, 0.0);
+    font-family: FontAwesome;
+}
+
+@keyframes erscheinen {
+    from {opacity: 0;}
+      to {opacity: 1;}
+}
+
+#input {
+    margin: 0px;
+    padding: 6px;
+    border: 0px solid #b58900;
+    background-color: rgba(64, 64, 64, 0.9);
+    border-radius: 6px 6px 0px 0px;
+    color : #fdf6e3;
+}
+
+#outer-box {
+    margin: 0px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+#inner-box {
+    margin: 0px;
+    border: 0px solid #444444;
+    background-color: rgba(64, 64, 64, 0.8);
+    border-radius: 0px 0px 6px 6px;
+}
+
+#entry {
+    color: #FFFFFF;
+}
+
+#entry:selected {
+    background-color: rgb(120, 120, 120);
+}
+
+#text {
+    margin: 6px 12px;
+    border: 0px solid #44AA44;
+}

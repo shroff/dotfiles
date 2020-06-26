@@ -4,12 +4,17 @@ set $down j
 set $up k
 set $right l
 
-set $term termite --title=Term
-set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png
-set $nolock ${HOME}/.nolock
 set $menu rofi -show drun
 set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
+
+set $term termite --title=Term
+set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png
+set $nolock ${HOME}/.nolock
+set $menu wofi
+set $screenshot grim - | swappy -f -
+set $screenshot-region slurp | grim -g - - | swappy -f -
+set $screenshot-window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp | grim -g - - | swappy -f -
 
 output eDP-1 scale 2
 output eDP-1 pos 0 0
@@ -61,6 +66,7 @@ exec swayidle -w \
 
     # screenshot
     bindsym $mod+Shift+p exec $screenshot
+    bindsym $mod+Ctrl+p exec $screenshot-window
     bindsym $mod+p exec $screenshot-region
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -209,6 +215,7 @@ bar {
     status_command SCRIPT_DIR=$HOME/sandbox/i3blocks-contrib i3blocks -c $HOME/.config/sway/blocks-config
     font pango:DejaVu Sans Mono 14
     position bottom
+    height 36
     colors {
         statusline #ffffff
         background #323232

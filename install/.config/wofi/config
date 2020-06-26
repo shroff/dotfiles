@@ -1,0 +1,9 @@
+mode=drun
+prompt=Run...
+lines=5
+width=450
+hide_scroll=true
+no_actions=true
+allow_markup=true
+allow_images=true
+image_size=40
