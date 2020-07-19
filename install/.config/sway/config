@@ -232,6 +232,7 @@ bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
 # startup
 exec --no-startup-id mako
+bindsym $mod+o exec makoctl menu wofi -d -i
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent

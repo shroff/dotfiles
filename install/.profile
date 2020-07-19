@@ -1,5 +1,5 @@
 # scaling for HiDPI devices
-alias vim='nvim'
+alias vim=nvim
 
 export SANDBOX="$HOME/sandbox"
 export JAVA_HOME="/usr/lib/jvm/default"

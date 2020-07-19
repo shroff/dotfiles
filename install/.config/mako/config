@@ -3,3 +3,5 @@
 width=400
 height=180
 border-radius=6
+#on-button-left=invoke-custom-action
+#custom-action=sh -c './makoctl menu -n %i wofi -d -p "Select Action..." && ./makoctl dismiss %i'
