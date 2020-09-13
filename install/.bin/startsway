@@ -24,4 +24,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export CLUTTER_BACKEND=wayland
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# Firefox
+export MOZ_ENABLE_WAYLAND=1
+
 exec dbus-launch --sh-syntax --exit-with-session sway
