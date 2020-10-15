@@ -9,3 +9,6 @@ export TERMINAL='termite --title=Term'
 export TERM=xterm
 export EDITOR=nvim
 export VISUAL=nvim
+export WINEPREFIX="$HOME/.wine"
+
+export PATH="$HOME/.cargo/bin:$PATH"
