@@ -1,4 +1,3 @@
-# scaling for HiDPI devices
 alias vim=nvim
 
 export SANDBOX="$HOME/sandbox"
