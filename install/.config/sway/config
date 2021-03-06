@@ -37,7 +37,7 @@ focus_follows_mouse no
 
 workspace_layout tabbed
 
-xwayland enable
+#xwayland enable
 
 exec swayidle -w \
     lock '$lock' \
@@ -231,9 +231,11 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -R
 bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
 # startup
-exec --no-startup-id mako
+exec mako
 bindsym $mod+o exec makoctl menu wofi -d -i
-exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
-exec --no-startup-id blueman-applet
+
+#exec start-pulseaudio-x11
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/geoclue-2.0/demos/agent
+exec blueman-applet
