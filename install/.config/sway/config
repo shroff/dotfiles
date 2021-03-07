@@ -8,8 +8,8 @@ set $menu rofi -show drun
 set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 
-set $term termite --title=Term
-set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.png
+set $term kitty --title=Term
+set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.jpg
 set $nolock ${HOME}/.nolock
 set $menu wofi
 set $screenshot grim - | swappy -f -
@@ -18,7 +18,7 @@ set $screenshot-window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visib
 
 output eDP-1 scale 2
 output eDP-1 pos 0 0
-output * bg ~/.cache/wallpaper.png fit
+output * bg ~/.cache/wallpaper.jpg fill
 
 input * {
     tap enabled
@@ -26,12 +26,8 @@ input * {
     dwt enabled
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout custom
-    xkb_model basic
-}
-
-font pango:DejaVu Sans Mono 14
+# font pango:DejaVu Sans Mono 14
+font pango:MesloLGS NF 14
 
 focus_follows_mouse no
 
@@ -42,11 +38,11 @@ workspace_layout tabbed
 exec swayidle -w \
     lock '$lock' \
     before-sleep '$lock' \
-    timeout 10 'if pgrep --uid $USER -x swaylock; then if ! ls $nolock; then swaymmsg "output * dpms off"; fi; fi' \
+    timeout 8 'if pgrep --uid $USER -x swaylock; then swaymmsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"' \
-    timeout 120 'if ! ls $nolock; then swaymsg "output * dpms off"; fi' \
+    timeout 120 swaymsg "output * dpms off" \
     resume 'swaymsg "output * dpms on"'  \
-    timeout 180 'if ! ls $nolock; then $lock; fi'
+    timeout 180 $lock
 
 ### Key bindings
 #
@@ -210,18 +206,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# statusbar
-bar {
-    status_command SCRIPT_DIR=$HOME/sandbox/i3blocks-contrib i3blocks -c $HOME/.config/sway/blocks-config
-    font pango:DejaVu Sans Mono 14
-    position bottom
-    height 36
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #323230 #323232 #5c5c5c
-    }
-}
 
 # keybindings
 bindsym XF86MonBrightnessUp exec light -A 10 && pkill -RTMIN+11 i3blocks
@@ -239,3 +223,6 @@ bindsym $mod+o exec makoctl menu wofi -d -i
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
 exec blueman-applet
+
+exec gammastep -l 12:80
+exec waybar

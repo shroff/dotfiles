@@ -1,6 +1,32 @@
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
+alias vim=nvim
+export EDITOR=nvim
+export VISUAL=nvim
+
+export TERMINAL='kitty --title=Term'
+export TERM=xterm
+
+export SANDBOX="$HOME/sandbox"
+export JAVA_HOME="/usr/lib/jvm/default"
+export ANDROID_HOME="$HOME/Android/Sdk"
+
+# User binaries
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
+
+# Flutter
+export PATH="$SANDBOX/flutter/bin:$PATH"
+
+# Android
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+# Wine
+export WINEPREFIX="$HOME/.wine"
+
+# Rust (cargo)
+export PATH="$HOME/.cargo/bin:$PATH"
+
+if test -f /usr/share/nvm/init-nvm.sh
   source /usr/share/nvm/init-nvm.sh
-fi
+end
 
 # basic aliases
 alias erc="$EDITOR ~/.zshrc"
@@ -34,4 +60,4 @@ alias grh='git reset --hard'
 alias grhh='git reset --hard HEAD~'
 
 alias gcp='git cherry-pick'
-alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+alias grt='cd (git rev-parse --show-toplevel || echo ".")'
