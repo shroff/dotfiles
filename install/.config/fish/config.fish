@@ -7,16 +7,21 @@ export TERM=xterm
 
 export SANDBOX="$HOME/sandbox"
 export JAVA_HOME="/usr/lib/jvm/default"
-export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_HOME="$SANDBOX/tools/android-sdk"
+export FLUTTER_HOME="$SANDBOX/flutter"
 
 # User binaries
 export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
 # Flutter
-export PATH="$SANDBOX/flutter/bin:$PATH"
+if test -d $FLUTTER_HOME
+  export PATH="$FLUTTER_HOME/bin:$PATH"
+end
 
 # Android
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
+if test -d $ANDROID_HOME
+  export PATH="$ANDROID_HOME/platform-tools:$PATH"
+end
 
 # Wine
 export WINEPREFIX="$HOME/.wine"
