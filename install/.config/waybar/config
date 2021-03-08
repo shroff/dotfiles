@@ -89,8 +89,8 @@
         "format-icons": ["", ""],
         "on-click": "light -A 10",
         "on-click-right": "light -S 1",
-        "on-scroll-up": "light -A 4",
-        "on-scroll-down": "light -N 1 && light -U 4"
+        "on-scroll-down": "light -A 4",
+        "on-scroll-up": "light -N 1 && light -U 4"
     },
     "battery": {
         "states": {
@@ -119,10 +119,10 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "{volume}% ",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -134,7 +134,10 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -4%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +4%"
     },
     "custom/media": {
         "format": "{icon} {}",
