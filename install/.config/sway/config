@@ -38,11 +38,13 @@ workspace_layout tabbed
 exec swayidle -w \
     lock '$lock' \
     before-sleep '$lock' \
-    timeout 8 'if pgrep --uid $USER -x swaylock; then swaymmsg "output * dpms off"; fi' \
-    resume 'swaymsg "output * dpms on"' \
-    timeout 120 swaymsg "output * dpms off" \
+    timeout 4 'if pgrep --uid $USER -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"'  \
-    timeout 180 $lock
+    timeout 180 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"'  \
+    timeout 200 '$lock'
+
+
 
 ### Key bindings
 #
@@ -222,7 +224,7 @@ bindsym $mod+o exec makoctl menu wofi -d -i
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
-exec blueman-applet
+#exec blueman-applet
 
 exec gammastep -l 12:80
 exec waybar
