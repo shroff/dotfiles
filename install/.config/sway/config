@@ -233,7 +233,8 @@ bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
 # startup
 exec mako
-bindsym $mod+o exec makoctl menu wofi -d -i
+bindsym $mod+Shift+i exec makoctl menu wofi -d -i
+bindsym $mod+i exec makoctl dismiss
 
 #exec start-pulseaudio-x11
 
