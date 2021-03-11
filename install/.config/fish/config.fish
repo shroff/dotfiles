@@ -15,6 +15,9 @@ end
 # Wine
 export WINEPREFIX="$HOME/.wine"
 
+# Chromium (flutter)
+export CHROME_EXECUTABLE=/usr/bin/chromium
+
 # User binaries
 export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 

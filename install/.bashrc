@@ -15,6 +15,10 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   export XDG_SESSION_TYPE=wayland
   export XDG_CURRENT_DESKTOP=sway
 
+  # Android Studio fixes
+  export _JAVA_AWT_WM_NONREPARENTING=1
+  export STUDIO_JDK=/usr/lib/jvm/java-11-openjdk-amd64/
+
   # QT (install qt5-wayland)
   export QT_QPA_PLATFORM=wayland-egl
   #export QT_QPA_PLATFORM=xcb # Force XWayland

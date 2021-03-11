@@ -219,6 +219,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bar {
+    swaybar_command waybar
+}
+
 
 # keybindings
 bindsym XF86MonBrightnessUp exec light -A 10 && pkill -RTMIN+11 i3blocks
@@ -238,4 +242,3 @@ exec /usr/lib/geoclue-2.0/demos/agent
 #exec blueman-applet
 
 exec gammastep -l 12:80
-exec waybar
