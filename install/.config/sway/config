@@ -8,7 +8,9 @@ set $menu rofi -show drun
 set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 
-set $term kitty --title=Term fish
+set $terminal kitty --title=Term
+set $shell fish
+set $term $terminal $shell
 set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.jpg
 set $nolock ${HOME}/.nolock
 set $menu wofi
@@ -28,7 +30,6 @@ input * {
 
 # font pango:DejaVu Sans Mono 14
 font pango:MesloLGS NF 14
-default_border none
 focus_follows_mouse no
 workspace_layout tabbed
 xwayland enable
@@ -188,10 +189,10 @@ exec swayidle -w \
     bindsym $mod+minus scratchpad show
 
     for_window [app_id="dropdown_term"] move scratchpad, scratchpad show
-    bindsym $mod+backspace exec swaymsg [app_id="dropdown_term"] scratchpad show || exec $term --class dropdown_term --title "Scratch"
+    bindsym $mod+backspace exec swaymsg [app_id="dropdown_term"] scratchpad show || exec $terminal --class dropdown_term --title "Temp" $shell
 
     for_window [app_id="dropdown_perf"] move scratchpad, scratchpad show
-    bindsym $mod+equal exec swaymsg [app_id="dropdown_perf"] scratchpad show || exec $term --class dropdown_perf --title "Perf" htop
+    bindsym $mod+equal exec swaymsg [app_id="dropdown_perf"] scratchpad show || exec $terminal --class dropdown_perf --title "Perf" htop
 
 #
 # Resizing containers:
