@@ -1,22 +1,11 @@
 alias vim=nvim
 export EDITOR=nvim
 export VISUAL=nvim
-
-export TERMINAL='kitty --title=Term'
-export TERM=xterm
+#export TERM=xterm
 
 export SANDBOX="$HOME/sandbox"
 export JAVA_HOME="/usr/lib/jvm/default"
 export ANDROID_HOME="$SANDBOX/tools/android-sdk"
-export FLUTTER_HOME="$SANDBOX/flutter"
-
-# User binaries
-export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
-
-# Flutter
-if test -d $FLUTTER_HOME
-  export PATH="$FLUTTER_HOME/bin:$PATH"
-end
 
 # Android
 if test -d $ANDROID_HOME
@@ -26,19 +15,8 @@ end
 # Wine
 export WINEPREFIX="$HOME/.wine"
 
-# Rust (cargo)
-export PATH="$HOME/.cargo/bin:$PATH"
-
-if test -f /usr/share/nvm/init-nvm.sh
-  source /usr/share/nvm/init-nvm.sh
-end
-
-# basic aliases
-alias erc="$EDITOR ~/.zshrc"
-alias src="source ~/.zshrc"
-
-# remapped command aliases
-alias ls="ls --color=auto"
+# User binaries
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
 # git aliases
 alias gst='git status'
