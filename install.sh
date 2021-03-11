@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in $(find install -type f ! -name install.sh ! -path '*/.git/*'); do
+for f in $(find install -type f); do
     relpath=$(realpath --relative-to=install $f)
     mkdir -p $HOME/$(dirname $relpath)
     if [[ ! -e "$HOME/$relpath" ]]; then
@@ -8,8 +8,8 @@ for f in $(find install -type f ! -name install.sh ! -path '*/.git/*'); do
         ln -srfT $f $HOME/$relpath
     else
         path1=$(readlink -f $HOME/$relpath)
-	path2=$(readlink -f $f)
-	if [[ $path1 != $path2 ]]; then
+        path2=$(readlink -f $f)
+        if [[ $path1 != $path2 ]]; then
             echo "Unable to install $relpath as another file exists. Skipping..."
         fi
     fi
