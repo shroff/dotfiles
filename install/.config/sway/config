@@ -11,7 +11,6 @@ set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screen
 set $terminal kitty --title=Term
 set $shell fish
 set $term $terminal $shell
-set $lock swaylock -f -F -e -c 000000 -i ~/.cache/wallpaper.jpg
 set $nolock ${HOME}/.nolock
 set $menu wofi
 set $screenshot grim - | swappy -f -
@@ -20,7 +19,11 @@ set $screenshot-window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visib
 
 output eDP-1 scale 2
 output eDP-1 pos 0 0
-output * bg ~/.cache/wallpaper.jpg fill
+
+set $wallpapers_path $HOME/Picture/Wallpapers
+set $wallpaper `find $HOME/Pictures/Wallpapers -type f | shuf -n 1`
+set $lock swaylock -f -F -e -c 000000 -i $wallpaper
+output * bg $wallpaper fill
 
 input * {
     tap enabled
