@@ -1,11 +1,5 @@
 alias vim=nvim
-export EDITOR=nvim
-export VISUAL=nvim
-#export TERM=xterm
-
-export SANDBOX="$HOME/sandbox"
-export JAVA_HOME="/usr/lib/jvm/default"
-export ANDROID_HOME="$SANDBOX/tools/android-sdk"
+alias ssh="kitty +kitten ssh"
 
 # Android
 if test -d $ANDROID_HOME
@@ -14,12 +8,6 @@ end
 
 # Wine
 export WINEPREFIX="$HOME/.wine"
-
-# Chromium (flutter)
-export CHROME_EXECUTABLE=/usr/bin/chromium
-
-# User binaries
-export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
 # git aliases
 alias gst='git status'

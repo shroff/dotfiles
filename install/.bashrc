@@ -8,6 +8,19 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+export EDITOR=nvim
+export VISUAL=nvim
+
+export SANDBOX="$HOME/sandbox"
+export JAVA_HOME="/usr/lib/jvm/default"
+export ANDROID_HOME="$SANDBOX/tools/android-sdk"
+
+# Chromium (flutter)
+export CHROME_EXECUTABLE=/usr/bin/chromium
+
+# User binaries
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
+
 if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   # GTK3
   #export GDK_BACKEND=x11 # Force XWayland
