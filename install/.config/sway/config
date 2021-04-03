@@ -11,7 +11,6 @@ set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screen
 set $terminal kitty --title=Term
 set $shell fish
 set $term $terminal $shell
-set $nolock ${HOME}/.nolock
 set $menu wofi
 set $screenshot grim - | swappy -f -
 set $screenshot-region slurp | grim -g - - | swappy -f -
@@ -19,11 +18,6 @@ set $screenshot-window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visib
 
 output eDP-1 scale 2
 output eDP-1 pos 0 0
-
-set $wallpapers_path $HOME/Picture/Wallpapers
-set $wallpaper `find $HOME/Pictures/Wallpapers -type f | shuf -n 1`
-set $lock swaylock -f -F -e -c 000000 -i $wallpaper
-output * bg $wallpaper fill
 
 input * {
     tap enabled
@@ -38,15 +32,18 @@ workspace_layout tabbed
 xwayland enable
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
+set $wallpaper `find $HOME/Pictures/Wallpapers -type f | shuf -n 1`
+set $lock swaylock -f -F -e -c 000000 -i $wallpaper
+output * bg $wallpaper fill
 
 exec swayidle -w \
-    lock '$lock' \
-    before-sleep '$lock' \
+    lock "$lock" \
+    before-sleep "$lock" \
     timeout 4 'if pgrep --uid $USER -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"'  \
     timeout 180 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"'  \
-    timeout 200 '$lock'
+    timeout 200 "$lock"
 
 
 
