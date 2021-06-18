@@ -39,7 +39,7 @@ output * bg $wallpaper fill
 exec swayidle -w \
     lock "$lock" \
     before-sleep "$lock" \
-    timeout 4 'if pgrep --uid $USER -x swaylock; then swaymsg "output * dpms off"; fi' \
+    timeout 10 'if pgrep --uid $USER -x swaylock; then swaymsg "output * dpms off"; fi' \
     resume 'swaymsg "output * dpms on"'  \
     timeout 180 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"'  \
@@ -236,10 +236,8 @@ exec mako
 bindsym $mod+Shift+i exec makoctl menu wofi -d -i
 bindsym $mod+i exec makoctl dismiss
 
-#exec start-pulseaudio-x11
-
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
-#exec blueman-applet
-
+exec blueman-applet
 exec gammastep -l 12:80
+exec signal-desktop --start-in-tray --enable-features=UseOzonePlatform --ozone-platform=wayland
