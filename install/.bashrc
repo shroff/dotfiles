@@ -20,6 +20,7 @@ export CHROME_EXECUTABLE=/usr/bin/chromium
 
 # User binaries
 export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   # GTK3
