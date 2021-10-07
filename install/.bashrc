@@ -34,7 +34,7 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   export STUDIO_JDK=/usr/lib/jvm/java-11-openjdk-amd64/
 
   # QT (install qt5-wayland)
-  export QT_QPA_PLATFORM=wayland-egl
+  export QT_QPA_PLATFORM=wayland
   #export QT_QPA_PLATFORM=xcb # Force XWayland
   export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
   export QT_WAYLAND_FORCE_DPI=physical

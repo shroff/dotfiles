@@ -3,7 +3,7 @@ alias ssh="kitty +kitten ssh"
 
 # Android
 if test -d $ANDROID_HOME
-  export PATH="$ANDROID_HOME/platform-tools:$PATH"
+  export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
 end
 
 # Wine
