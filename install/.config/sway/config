@@ -16,14 +16,27 @@ set $screenshot grim - | swappy -f -
 set $screenshot-region slurp | grim -g - - | swappy -f -
 set $screenshot-window swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp | grim -g - - | swappy -f -
 
-output eDP-1 scale 2
-output eDP-1 pos 0 0
-
+# Inputs
 input * {
     tap enabled
     natural_scroll enabled
     dwt enabled
 }
+
+input 10429:2309:UGTABLET_10_inch_PenTablet {
+    map_to_output eDP-1
+    map_from_region 0.1x0.1 1x1
+    tool_mode * relative
+}
+
+# Seats
+seat * hide_cursor 10000
+seat seat_tablet attach "10429:2309:UGTABLET_10_inch_PenTablet"
+
+
+# Outputs
+output eDP-1 scale 2
+output eDP-1 pos 0 0
 
 # font pango:DejaVu Sans Mono 14
 font pango:MesloLGS NF 14
@@ -241,3 +254,4 @@ exec /usr/lib/geoclue-2.0/demos/agent
 exec blueman-applet
 exec gammastep -l 12:80
 exec signal-desktop --start-in-tray --enable-features=UseOzonePlatform --ozone-platform=wayland
+exec element-desktop --hidden --enable-features=UseOzonePlatform --ozone-platform=wayland
