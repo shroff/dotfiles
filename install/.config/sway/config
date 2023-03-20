@@ -35,7 +35,7 @@ seat seat_tablet attach "10429:2309:UGTABLET_10_inch_PenTablet"
 
 
 # Outputs
-output eDP-1 scale 2
+output eDP-1 scale 1
 output eDP-1 pos 0 0
 
 # font pango:DejaVu Sans Mono 14
@@ -244,6 +244,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
+include /etc/sway/config.d/*
+
 # startup
 exec mako
 bindsym $mod+Shift+i exec makoctl menu wofi -d -i
@@ -255,3 +257,4 @@ exec blueman-applet
 exec gammastep -l 12:80
 exec signal-desktop --start-in-tray --enable-features=UseOzonePlatform --ozone-platform=wayland
 exec element-desktop --hidden --enable-features=UseOzonePlatform --ozone-platform=wayland
+

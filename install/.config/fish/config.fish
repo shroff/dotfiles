@@ -1,14 +1,3 @@
-alias vim=nvim
-alias ssh="kitty +kitten ssh"
-
-# Android
-if test -d $ANDROID_HOME
-  export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
-end
-
-# Wine
-export WINEPREFIX="$HOME/.wine"
-
 # git aliases
 alias gst='git status'
 

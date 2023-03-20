@@ -9,3 +9,5 @@ set backspace=indent,eol,start
 
 set number
 set numberwidth=4
+
+highlight Normal ctermbg=NONE
