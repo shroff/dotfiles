@@ -6,13 +6,16 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias cat=bat
 alias vim=nvim
 PS1='[\u@\h \W]\$ '
 
 export EDITOR=nvim
 export VISUAL=nvim
-export SANDBOX="$HOME/sandbox"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export JAVA_HOME="/usr/lib/jvm/default"
+
+export SANDBOX="$HOME/sandbox"
 export ANDROID_HOME="$SANDBOX/tools/android-sdk"
 export FLUTTER_HOME="$SANDBOX/tools/flutter"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
@@ -69,7 +72,7 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   export _JAVA_AWT_WM_NONREPARENTING=1
 
   # Kitty
-  alias ssh="kitty +kitten ssh"
+  alias ssh="TERM=xterm ssh"
 
   eval $(gnome-keyring-daemon --start)
   export SSH_AUTH_SOCK
@@ -77,11 +80,3 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   exec dbus-launch --sh-syntax --exit-with-session sway
   exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 fi
-
-# kitty shell integration
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION

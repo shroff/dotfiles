@@ -5,10 +5,11 @@ set $up k
 set $right l
 
 set $menu rofi -show drun
-set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
+# set $screenshot grim $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
+set $screenshot grim $(xdg-user-dir PICTURES)/Screenshot.png
 set $screenshot-region grim -g $(slurp) $(xdg-user-dir PICTURES)/$(date +'Screenshot-%Y-%m-%d-%H%M%S.png')
 
-set $terminal kitty --title=Term
+set $terminal foot
 set $shell fish
 set $term $terminal $shell
 set $menu wofi
@@ -46,7 +47,7 @@ xwayland enable
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 set $wallpaper `find $HOME/Pictures/Wallpapers -type f | shuf -n 1`
-set $lock swaylock -f -F -e -c 000000 -i $wallpaper
+set $lock swaylock -f -F -e -c 000000 -i $(find $HOME/Pictures/Wallpapers -type f | shuf -n 1)
 output * bg $wallpaper fill
 
 exec swayidle -w \
@@ -202,10 +203,10 @@ exec swayidle -w \
     bindsym $mod+minus scratchpad show
 
     for_window [app_id="dropdown_term"] move scratchpad, scratchpad show
-    bindsym $mod+backspace exec swaymsg [app_id="dropdown_term"] scratchpad show || exec $terminal --class dropdown_term --title "Temp" $shell
+    bindsym $mod+backspace exec swaymsg [app_id="dropdown_term"] scratchpad show || exec $terminal -a dropdown_term --title "Temp" $shell
 
     for_window [app_id="dropdown_perf"] move scratchpad, scratchpad show
-    bindsym $mod+equal exec swaymsg [app_id="dropdown_perf"] scratchpad show || exec $terminal --class dropdown_perf --title "Perf" htop
+    bindsym $mod+equal exec swaymsg [app_id="dropdown_perf"] scratchpad show || exec $terminal -a dropdown_perf --title "Perf" htop
 
 #
 # Resizing containers:
@@ -246,10 +247,13 @@ bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
 include /etc/sway/config.d/*
 
-# startup
-exec mako
-bindsym $mod+Shift+i exec makoctl menu wofi -d -i
-bindsym $mod+i exec makoctl dismiss
+# Notifications
+exec swaync
+bindsym $mod+Shift+i exec swaync-client -t -sw
+bindsym $mod+i exec swaync-client --hide-latest
+# exec mako
+# bindsym $mod+Shift+i exec makoctl menu wofi -d -i
+# bindsym $mod+i exec makoctl dismiss
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
@@ -257,4 +261,5 @@ exec blueman-applet
 exec gammastep -l 12:80
 exec signal-desktop --start-in-tray --enable-features=UseOzonePlatform --ozone-platform=wayland
 exec element-desktop --hidden --enable-features=UseOzonePlatform --ozone-platform=wayland
+exec syncthing --no-browser
 
