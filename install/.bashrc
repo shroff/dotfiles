@@ -77,6 +77,7 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   eval $(gnome-keyring-daemon --start)
   export SSH_AUTH_SOCK
 
-  exec dbus-launch --sh-syntax --exit-with-session sway
+  #exec dbus-launch --sh-syntax --exit-with-session sway
+  exec sway
   exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 fi
