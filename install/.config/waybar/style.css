@@ -74,6 +74,7 @@ window#waybar.chromium {
 #network,
 #pulseaudio,
 #custom-media,
+#custom-swaync,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -162,6 +163,10 @@ label:focus {
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;
+}
+
+#custom-swaync {
+    background-color: #c04060;
 }
 
 #custom-media {
