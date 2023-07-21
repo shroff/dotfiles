@@ -20,6 +20,7 @@ export ANDROID_HOME="$SANDBOX/tools/android-sdk"
 export FLUTTER_HOME="$SANDBOX/tools/flutter"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 export WINEPREFIX="$HOME/.wine"
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 
 
 # User binaries
@@ -81,3 +82,4 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   exec sway
   exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 fi
+

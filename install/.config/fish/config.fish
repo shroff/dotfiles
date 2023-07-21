@@ -25,8 +25,11 @@ alias grhh='git reset --hard HEAD~'
 alias gcp='git cherry-pick'
 alias grt='cd (git rev-parse --show-toplevel || echo ".")'
 
+alias ssh='TERM=xterm command ssh'
+
 # For foot
 function mark_prompt_start --on-event fish_prompt
     echo -en "\e]133;A\e\\"
 end
 
+nvm use v20.3.0
