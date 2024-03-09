@@ -75,11 +75,8 @@ if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ]; then
   # Kitty
   alias ssh="TERM=xterm ssh"
 
-  eval $(gnome-keyring-daemon --start)
-  export SSH_AUTH_SOCK
-
   #exec dbus-launch --sh-syntax --exit-with-session sway
   exec sway
-  exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+  exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK
 fi
 

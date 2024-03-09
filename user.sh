@@ -20,6 +20,9 @@ paru -S --noconfirm mesa libva-mesa-driver mesa-vdpau
 paru -S ttf-font-awesome ttf-dejavu ttf-roboto noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 paru -S ttf-roboto-mono ttf-meslo-nerd ttf-meslo-nerd-font-powerlevel10k
 
+# SSH Agent
+systemctl --user enable --now gcr-ssh-agent.socket
+
 # Shell (Fish)
 paru -S --noconfirm fish pkgfile fisher fzf bat fd
 fisher install PatrickF1/fzf.fish
