@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ -z $WAYLAND_DISPLAY ] && [ -z $DISPLAY ] && [ $(tty) == "/dev/tty1" ]; then
+  # GTK3
+  #export GDK_BACKEND=x11 # Force XWayland
+
+  export XDG_SESSION_TYPE=wayland
+  export XDG_CURRENT_DESKTOP=sway
+
+  # QT (install qt5-wayland)
+  export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+  export QT_WAYLAND_FORCE_DPI=physical
+  export QT_QPA_PLATFORMTHEME="qt5ct"
+  export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+  # Elementary
+  export ECORE_EVAS_ENGINE=wayland_egl
+  export ELM_ENGINE=wayland_egl
+
+  # SDL - not a good idea
+  #export SDL_VIDEODRIVER=wayland
+
+  export CLUTTER_BACKEND=wayland
+  export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+  # Firefox
+  export MOZ_ENABLE_WAYLAND=1
+
+  # Android Studio fixes
+  export STUDIO_JDK=/usr/lib/jvm/java-11-openjdk-amd64/
+  export _JAVA_AWT_WM_NONREPARENTING=1
+
+  exec sway
+  exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK SSH_AUTH_SOCK
+fi
+

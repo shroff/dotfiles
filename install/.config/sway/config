@@ -47,9 +47,10 @@ xwayland enable
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 set $wallpaper `find $HOME/Pictures/Wallpapers -type f | shuf -n 1`
-set $lock swaylock -f -F -e -c 000000 -i $(find $HOME/Pictures/Wallpapers -type f | shuf -n 1)
+set $lock swaylock -f -F -e -c ffffff -i $(find $HOME/Pictures/Wallpapers -type f | shuf -n 1)
 output * bg $wallpaper fill
 
+exec_always killall swayidle
 exec swayidle -w \
     lock "$lock" \
     before-sleep "$lock" \
