@@ -20,6 +20,7 @@ export SANDBOX="$HOME/sandbox"
 export ANDROID_HOME="$SANDBOX/tools/android-sdk"
 export FLUTTER_HOME="$SANDBOX/tools/flutter"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
+export GOPATH="$SANDBOX/tools/go"
 export WINEPREFIX="$HOME/.wine"
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
@@ -37,6 +38,12 @@ fi
 if test -d $FLUTTER_HOME; then
   echo "Found Flutter at $FLUTTER_HOME"
   export PATH="$FLUTTER_HOME/bin:$PATH"
+fi
+
+# Go
+if test -d $GOPATH; then
+  echo "Found Go at $GOPATH"
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 # Rust
