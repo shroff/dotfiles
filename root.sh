@@ -21,3 +21,5 @@ usermod -aG wheel shroff
 pacman -S --noconfirm light
 usermod -aG video shroff
 
+# Misc tools
+pacman -S --noconfirm usbutils
