@@ -23,7 +23,7 @@ fish -c 'fisher install IlanCosman/tide'
 
 # File Manager
 paru -S --noconfirm nemo nemo-fileroller nemo-audo-tab nemo-image-converter nemo-preview ntfs-3g gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs ffmpegthumbnailer odt2txt gst-plugins-good gst-plugins-bad p7zip unrar unace lrzip squashfs-tools
-gsettings set org.cinnamon.desktop.default-applications.terminal exec foot
+gsettings set org.cinnamon.desktop.default-applications.terminal exec "foot fish"
 
 # Backlight control 
 paru -S --noconfirm light
@@ -37,3 +37,4 @@ paru -S --noconfirm imagemagick ghostscript libheif libjxl libraw libwebp openjp
 # Podman (rootless)
 paru -S --noconfirm podman podman-docker podman-compose docker-compose slirp4netns fuse-overlayfs
 systemctl --user enable --now podman.socket
+
